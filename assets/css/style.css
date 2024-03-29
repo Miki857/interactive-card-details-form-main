@@ -259,6 +259,12 @@ html{
         .mainContainer{
             grid-column: span 2;
         }
+
+        .completeState{
+            left: 0;
+            z-index: 2;
+            padding: 30%;
+        }
     }
 }
 
