@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    
+    <title>Interactive card details form</title>
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body class="body">
+    <section class="mainCardsImages section">
+      <div class="mainCardsImg__cardBackFace">
+        <p class="card3D">000</p>
+      </div>
+      <div class="mainCardsImg__cardFrontFace">
+        <div class="cardBackFace__cdLogo"></div>
+        <div class="cardBackFace__cdNmb">
+          <p class="cardNmb">0000 0000 0000 0000</p>
+          <div class="flex space-between">
+            <p class="cardName">Your Name</p>
+            <p class="cardDate">00/00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mainContainer">
+      <form target="_self" class="form" onsubmit="completeState(); return false;">
+        <div class="field-holder">
+          <label for="Cardholder_Name">Cardholder Name</label>
+          <input type="text" name="Cardholder_Name" id="Cardholder_Name" placeholder="e.g. Jane Appleseed" required>
+          <span class="input__invalid hidden">
+            Nombre Invalido
+          </span>
+        </div>
+        
+        <div class="field-holder">
+          <label for="Card_Number">Card Number</label>
+          <input type="text" name="Card_Number" pattern="\d{16}" id="Card_Number" placeholder="e.g. 1234 5678 9123 0000" required>
+          <span class="input__invalid hidden">
+            Numero Invalido
+          </span>
+        </div>
+  
+        <div class="field-holder-row">
+          <div class="field-holder">
+            <label for="Exp_Date">Exp. Date (MM/YY)</label>
+            <div class="doubleInputs">
+              <div class="flex flex-column">
+                <input type="number" name="Exp_Date" min="1" max="12" id="Exp_Date_Month" placeholder="MM" required>
+                <span class="input__invalid hidden">
+                  Mes Invalido
+                </span>
+              </div>
+
+              <div class="flex flex-column">
+                <input type="number" name="Exp_Date" min="24" max="24" id="Exp_Date_Year" placeholder="YY" required>
+                <span class="input__invalid hidden">
+                  Año Invalido
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="field-holder">
+            <label for="CVC">CVC</label>
+            <div><!-- El div doubleInputs le agrega 3px de alto, no se como quitarlo de forma dinamica, asi que para que ese doble input este alineado con este, a este single input lo incluyo en un div. -->
+              <input type="text" name="CVC" pattern="\d{3}" id="CVC" class="notOversizeX" placeholder="e.g. 123" required>
+              <span class="input__invalid hidden">
+                CVC Invalido
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <button type="submit" class="button">Confirm</button>
+      </form>
+      <!-- Completed state start -->
+  
+      <section class="completeState hidden">
+        <div class="checkImg"></div>
+        <h1>Thank you!</h1>
+        <h4>We've added your card details</h4>
+        <button type="submit" class="button" onclick="continueState();">Continue</button>
+      </section>
+    </section>
+    <!-- SCRIPTS -->
+    <script src="assets/js/completeState.js" defer></script>
+  </body>
+</html>
